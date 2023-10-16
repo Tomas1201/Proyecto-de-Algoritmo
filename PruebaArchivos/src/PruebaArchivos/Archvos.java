@@ -31,7 +31,23 @@ public static void main(String[]args) throws IOException {
 	MostrarArchivos(Raiz);
 }
 
+public void MenuElejir() {
+	System.out.println("1.Mostrar todo el catalogo|2.Tematicas|3.Disponible|4.Reservado");
+	int pepe = -1;
+switch(pepe){
+case 1:
+	MostrarArchivos(Raiz);
+	break;
+case 2:
+	break;
+case 3:
+	MostrarArchivos(Raiz, true);
+	break;
+case 4:
+	MostrarArchivos(Raiz, false);
+}	
 
+}
 
 //Busca si ya existe algun directorio con el nombre ingresado
 public static void CrearTematica(String Tematica) {
@@ -41,7 +57,7 @@ public static void CrearTematica(String Tematica) {
 	}
 	else {
 		boolean estado =TematicaC.mkdir();
-//		System.out.println(estado);
+
 	}
 }
 
@@ -106,6 +122,36 @@ public static void MostrarArchivos(File Ruta) {
 		}
 	}
 }
+
+public static void MostrarArchivos(File Ruta, boolean Disponibilidad) {
+	
+	for(File ArchDire : Ruta.listFiles()) {
+		if(Disponibilidad) {
+		if(ArchDire.isFile() && ArchDire.canRead()) {
+			
+			
+			SacarTXT(ArchDire.getName());
+		}
+		
+		else if(ArchDire.isDirectory()) {
+			System.out.println(ArchDire.getName()+": ");
+			MostrarArchivos(ArchDire);
+		}}
+		else {
+			if(ArchDire.isFile() && !ArchDire.canRead()) {
+				
+				
+				SacarTXT(ArchDire.getName());
+			}
+			
+			else if(ArchDire.isDirectory()) {
+				System.out.println(ArchDire.getName()+": ");
+				MostrarArchivos(ArchDire);
+			}}
+		}
+		
+		
+	}
 
 public static void SacarTXT(String Nombre) {
 	int Longitud = Nombre.length();
