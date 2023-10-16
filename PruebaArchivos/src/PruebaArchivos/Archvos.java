@@ -10,38 +10,38 @@ import java.io.PrintWriter;
 public class Archvos {
 static String NombreTematica;
 static Scanner sc = new Scanner(System.in);
-static File TematicaA = new File("C:\\Users\\Tomas1201\\Desktop\\Pepe\\");
+static File Raiz = new File("C:\\Pepe\\");
 	public Archvos() {
 	}
 public static void main(String[]args) throws IOException {
-	File Archivo = new File("C:\\Users\\Tomas1201\\Desktop\\Archivo.txt");
+//	File Archivo = new File("C:\\Users\\Tomas1201\\Desktop\\Archivo.txt");
 //	System.out.print(Archivo.exists());
 	
-//	System.out.println("Ingrese una tematica: ");
-//	NombreTematica = sc.nextLine();	
-//	ConprobarDirectorio(NombreTematica);
+	System.out.println("Ingrese una tematica: ");
+	NombreTematica = sc.nextLine();	
+	CrearTematica(NombreTematica);
 	System.out.println("Crea un libro: ");
 	
 	CrearLibro(sc.nextLine(), sc.nextLine());
-//	
-//	System.out.println("Busque un Libro: ");
-//	String Libro = sc.nextLine()+".txt";
-//	BuscarLibro(TematicaA, Libro);
-//	
-	MostrarArchivos(TematicaA);
+	
+	System.out.println("Busque un Libro: ");
+	String Libro = sc.nextLine()+".txt";
+	BuscarLibro(Raiz, Libro);
+	
+	MostrarArchivos(Raiz);
 }
 
 
 
 //Busca si ya existe algun directorio con el nombre ingresado
-public static void ConprobarDirectorio(String Tematica) {
-	File TematicaC = new File("C:\\Users\\Tomas1201\\Desktop\\"+Tematica+"\\");
+public static void CrearTematica(String Tematica) {
+	File TematicaC = new File("C:\\Pepe\\"+Tematica+"\\");
 	if(TematicaC.exists()) {
 		System.out.println("Ya existe una tematica con ese nombre.");		
 	}
 	else {
 		boolean estado =TematicaC.mkdir();
-		System.out.println(estado);
+//		System.out.println(estado);
 	}
 }
 
